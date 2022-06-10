@@ -39,14 +39,26 @@ describe("given the factorial function", () => {
 
   it("given the input as a data type other than a number when it calls the function it will throw an error", () => {
     // arrange
-    const expectedToThrow = () => factorial({});
+    const expectedToThrow1 = () => factorial(null);
+    const expectedToThrow2 = () => factorial(undefined);
+    const expectedToThrow3 = () => factorial("");
+    const expectedToThrow4 = () => factorial("Hola");
+    const expectedToThrow5 = () => factorial({});
+    const expectedToThrow6 = () => factorial(false);
+    const expectedToThrow7 = () => factorial(true);
     // act and assert
-    expect(expectedToThrow).toThrow("Invalid param");
+    expect(expectedToThrow1).toThrow("Invalid param");
+    expect(expectedToThrow2).toThrow("Invalid param");
+    expect(expectedToThrow3).toThrow("Invalid param");
+    expect(expectedToThrow4).toThrow("Invalid param");
+    expect(expectedToThrow5).toThrow("Invalid param");
+    expect(expectedToThrow6).toThrow("Invalid param");
+    expect(expectedToThrow7).toThrow("Invalid param");
   });
 
   it("given the input as a negative number when it calls the function it will throw an error", () => {
     // arrange
-    const expectedToThrow = () => factorial(-3.6);
+    const expectedToThrow = () => factorial(-3);
     // act and assert
     expect(expectedToThrow).toThrow("Invalid param");
   });

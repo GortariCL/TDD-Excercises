@@ -21,16 +21,40 @@ describe("given the removeMiddle function ", () => {
 
   it("given the input as a data type other than an array when it calls the function it will throw an error", () => {
     // arrange
-    const expectedToThrow = () => removeMiddle(null);
+    const expectedToThrow1 = () => removeMiddle(null);
+    const expectedToThrow2 = () => removeMiddle(undefined);
+    const expectedToThrow3 = () => removeMiddle(10);
+    const expectedToThrow4 = () => removeMiddle("");
+    const expectedToThrow5 = () => removeMiddle("Hola");
+    const expectedToThrow6 = () => removeMiddle({});
+    const expectedToThrow7 = () => removeMiddle(false);
+    const expectedToThrow8 = () => removeMiddle(true);
     // act and assert
-    expect(expectedToThrow).toThrow("Invalid param");
+    expect(expectedToThrow1).toThrow("Invalid param");
+    expect(expectedToThrow2).toThrow("Invalid param");
+    expect(expectedToThrow3).toThrow("Invalid param");
+    expect(expectedToThrow4).toThrow("Invalid param");
+    expect(expectedToThrow5).toThrow("Invalid param");
+    expect(expectedToThrow6).toThrow("Invalid param");
+    expect(expectedToThrow7).toThrow("Invalid param");
+    expect(expectedToThrow8).toThrow("Invalid param");
   });
 
   it("given the input as an array with a data type other than String when you call the function it will throw an error", () => {
     // arrange
-    const expectedToThrow = () => removeMiddle([null, undefined, 10]);
+    const expectedToThrow1 = () => removeMiddle([null, null, null]);
+    const expectedToThrow2 = () => removeMiddle([undefined, undefined, undefined]);
+    const expectedToThrow3 = () => removeMiddle([10, 4, 23]);
+    const expectedToThrow4 = () => removeMiddle([{}, {}, {}]);
+    const expectedToThrow5 = () => removeMiddle([true, true, true]);
+    const expectedToThrow6 = () => removeMiddle([false, false, false]);
     // act and assert
-    expect(expectedToThrow).toThrow("Invalid param");
+    expect(expectedToThrow1).toThrow("Invalid param");
+    expect(expectedToThrow2).toThrow("Invalid param");
+    expect(expectedToThrow3).toThrow("Invalid param");
+    expect(expectedToThrow4).toThrow("Invalid param");
+    expect(expectedToThrow5).toThrow("Invalid param");
+    expect(expectedToThrow6).toThrow("Invalid param");
   });
 
   it("given the empty array when it calls the function it will throw an error", () => {

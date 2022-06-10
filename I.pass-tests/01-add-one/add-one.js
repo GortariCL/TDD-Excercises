@@ -1,9 +1,5 @@
 const addOne = (numbers) => {
-  if (
-    !Array.isArray(numbers) ||
-    numbers.length === 0 ||
-    numbers.some((e) => typeof e !== "number")
-  ) {
+  if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
   return numbers.map((e) => e + 1);
@@ -12,3 +8,21 @@ const addOne = (numbers) => {
 module.exports = {
   addOne,
 };
+
+const isNotValidParam = (numbers)  => {
+  return (
+    isNotAnArray(numbers) || isNotEmptyArray(numbers) || isNotANumber(numbers)
+  );
+}
+
+const isNotANumber = (numbers) => {
+  return numbers.some((e) => typeof e !== "number");
+}
+
+const isNotEmptyArray = (numbers) => {
+  return numbers.length === 0;
+}
+
+const isNotAnArray = (numbers) => {
+  return !Array.isArray(numbers);
+}

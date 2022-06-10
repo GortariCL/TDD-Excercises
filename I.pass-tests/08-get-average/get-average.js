@@ -2,7 +2,7 @@
 // return the average of all the numbers
 // be sure to exclude the strings
 const average = (numbers) => {
-  if (!Array.isArray(numbers) || numbers.length === 0) {
+  if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
   const newNumbers = numbers.filter((e) => typeof e === "number");
@@ -13,3 +13,14 @@ const average = (numbers) => {
 module.exports = {
   average,
 };
+const isNotValidParam = (numbers) => {
+  return isNotAnArray(numbers) || isNotEmptyArray(numbers);
+}
+
+const isNotEmptyArray = (numbers) => {
+  return numbers.length === 0;
+}
+
+const isNotAnArray = (numbers) => {
+  return !Array.isArray(numbers);
+}

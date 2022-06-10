@@ -33,16 +33,42 @@ describe("given the words array when the words that call the function will retur
 
   it("given the input as a data type other than an array and a string when it calls the function it will throw an error", () => {
     // arrange
-    const expectedToThrowArray = () => findTheNeedle(undefined, {});
+    const expectedToThrowArray1 = () => findTheNeedle(undefined, undefined);
+    const expectedToThrowArray2 = () => findTheNeedle(null, null);
+    const expectedToThrowArray3 = () => findTheNeedle(1, 12);
+    const expectedToThrowArray4 = () => findTheNeedle("undefined", "");
+    const expectedToThrowArray5 = () => findTheNeedle(true, true);
+    const expectedToThrowArray6 = () => findTheNeedle(false, false);
+    const expectedToThrowArray7 = () => findTheNeedle([], []);
+    const expectedToThrowArray8 = () => findTheNeedle({}, {});
     // act and assert
-    expect(expectedToThrowArray).toThrow("Invalid param");
+    expect(expectedToThrowArray1).toThrow("Invalid param");
+    expect(expectedToThrowArray2).toThrow("Invalid param");
+    expect(expectedToThrowArray3).toThrow("Invalid param");
+    expect(expectedToThrowArray4).toThrow("Invalid param");
+    expect(expectedToThrowArray5).toThrow("Invalid param");
+    expect(expectedToThrowArray6).toThrow("Invalid param");
+    expect(expectedToThrowArray7).toThrow("Invalid param");
+    expect(expectedToThrowArray8).toThrow("Invalid param");
   });
 
   it("given the input as an array with a data type other than String and a data type other than String as the second parameter when you call the function it will throw an error", () => {
     // arrange
-    const expectedToThrowArray = () => findTheNeedle([1, null, undefined], null);
+    const expectedToThrowArray1 = () => findTheNeedle([null, null, null], null);
+    const expectedToThrowArray2 = () => findTheNeedle([undefined, undefined, undefined], undefined);
+    const expectedToThrowArray3 = () => findTheNeedle([23, 23, 23], 23);
+    const expectedToThrowArray4 = () => findTheNeedle([true, true, true], true);
+    const expectedToThrowArray5 = () => findTheNeedle([false, false, false], false);
+    const expectedToThrowArray6 = () => findTheNeedle([[], [], []], []);
+    const expectedToThrowArray7 = () => findTheNeedle([{}, {}, {}], {});
     // act and assert
-    expect(expectedToThrowArray).toThrow("Invalid param");
+    expect(expectedToThrowArray1).toThrow("Invalid param");
+    expect(expectedToThrowArray2).toThrow("Invalid param");
+    expect(expectedToThrowArray3).toThrow("Invalid param");
+    expect(expectedToThrowArray4).toThrow("Invalid param");
+    expect(expectedToThrowArray5).toThrow("Invalid param");
+    expect(expectedToThrowArray6).toThrow("Invalid param");
+    expect(expectedToThrowArray7).toThrow("Invalid param");
   });
 
   it("given no input when it calls the function it will throw an error", () => {

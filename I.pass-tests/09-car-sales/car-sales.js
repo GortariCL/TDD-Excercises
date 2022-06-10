@@ -1,14 +1,5 @@
 const sales = (input) => {
-  if (
-    !Array.isArray(input) ||
-    input.length === 0 ||
-    input.some((e) => typeof e !== "object" ||
-    input.some(e => typeof e.price !== "number" || 
-    typeof e.make !== 'string' || 
-    typeof e.model !== 'string' || 
-    typeof e.colour !== 'string')
-    )
-  ) {
+  if (isNotValidParams(input)) {
     throw new Error("Invalid param");
   }
   const carsMake = input.map((e) => e.make);
@@ -35,3 +26,31 @@ const sales = (input) => {
 module.exports = {
   sales,
 };
+
+const isNotValidParams = (input) => {
+  return (
+    isNotAnArray(input) || isNotEmptyString(input) || isNotValidValues(input)
+  );
+}
+
+const isNotValidValues = (input) => {
+  return input.some(
+    (e) =>
+      typeof e !== "object" ||
+      typeof e.price !== "number" ||
+      typeof e.make !== "string" ||
+      typeof e.model !== "string" ||
+      typeof e.colour !== "string" ||
+      e.make.length === 0 ||
+      e.model.length === 0 ||
+      e.colour.length === 0
+  );
+}
+
+const isNotEmptyString = (input) => {
+  return input.length === 0;
+}
+
+const isNotAnArray = (input) => {
+  return !Array.isArray(input);
+}
