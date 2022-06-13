@@ -28,5 +28,4 @@ const isNotArray = (words) => {
 };
 const isNotValidParam = (words) => {
   return isNotArray(words) || isEmptyArray(words) || isNotValidValue(words);
-}
-
+};

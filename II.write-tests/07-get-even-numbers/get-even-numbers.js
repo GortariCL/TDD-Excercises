@@ -1,7 +1,30 @@
-function getEven(numbers) {
-  return numbers.filter(function(number) {
+const getEven = (numbers) => {
+  if (isNotValidParam(numbers)) {
+    throw new Error("Invalid param");
+  }
+  return numbers.filter((number) => {
     return number % 2 === 0;
   });
+};
+
+module.exports = {
+  getEven,
+};
+
+const isNotValidParam = (numbers) => {
+  return (
+    isNotArray(numbers) || isEmptyArray(numbers) || isNotValidValue(numbers)
+  );
 }
 
-module.exports = getEven;
+const isNotValidValue = (numbers) => {
+  return numbers.some((e) => e === null || typeof e !== "number");
+}
+
+const isEmptyArray = (numbers) => {
+  return numbers.length === 0;
+}
+
+const isNotArray = (numbers) => {
+  return !Array.isArray(numbers);
+}

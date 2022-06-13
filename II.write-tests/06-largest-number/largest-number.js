@@ -1,11 +1,26 @@
-function getLargestNumber(array) {
-  var largestNumber;
-  for (var i = 0; i < array.length - 1; i++) {
-    if (array[i] > array[i + 1]) {
-      largestNumber = array[i];
-    }
+const getLargestNumber = (array) => {
+  if (isNotValidParam(array)) {
+    throw new Error("Invalid param");
   }
-  return largestNumber;
-}
+  return Math.max(...array);
+};
 
-module.exports = getLargestNumber;
+module.exports = {
+  getLargestNumber,
+};
+
+const isNotArray = (array) => {
+  return !Array.isArray(array);
+};
+
+const isEmptyArray = (array) => {
+  return array.length === 0;
+};
+
+const isNotValidValue = (array) => {
+  return array.some((e) => e === null || typeof e !== "number");
+};
+
+const isNotValidParam = (array) => {
+  return isNotArray(array) || isEmptyArray(array) || isNotValidValue(array);
+};
