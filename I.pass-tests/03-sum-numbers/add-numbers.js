@@ -2,7 +2,7 @@ const addAllNumbers = (numbers) => {
   if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
-  return numbers.reduce((acc, cur) => acc + cur);
+  return numbers.reduce(addAllNum);
 };
 
 module.exports = {
@@ -25,3 +25,4 @@ const isNotEmptyArray = (numbers) => {
 const isNotAnArray = (numbers) => {
   return !Array.isArray(numbers);
 };
+const addAllNum = (acc, cur) => acc + cur;

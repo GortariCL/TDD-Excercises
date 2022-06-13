@@ -3,8 +3,7 @@ const removeMiddle = (words) => {
     throw new Error("Invalid param");
   }
   const middle = words.length / 2;
-  const word = words.splice(Math.trunc(middle), 1);
-  return word;
+  return words.splice(Math.trunc(middle), 1);
 };
 
 module.exports = {

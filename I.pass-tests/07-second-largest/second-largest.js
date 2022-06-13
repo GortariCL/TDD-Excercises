@@ -2,7 +2,7 @@ const secondLargest = (numbers) => {
   if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
-  numbers.sort((a, b) => b - a);
+  numbers.sort(sortFromLargest);
   return numbers[1];
 };
 
@@ -27,4 +27,5 @@ const isNotValidParam = (numbers) => {
     isSmallerEqualThanOne(numbers) ||
     isNotANumber(numbers)
   );
-}
+};
+const sortFromLargest = (a, b) => b - a;

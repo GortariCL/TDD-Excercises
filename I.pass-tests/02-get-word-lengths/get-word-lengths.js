@@ -2,7 +2,7 @@ const getWordLengths = (someWords) => {
   if (isNotValidParam(someWords)) {
     throw new Error("Invalid param");
   }
-  return someWords.map((e) => e.length);
+  return someWords.map(extractLengths);
 };
 
 module.exports = {
@@ -28,3 +28,5 @@ const isNotEmptyArray = (someWords) => {
 const isNotAnArray = (someWords) => {
   return !Array.isArray(someWords);
 }
+const extractLengths = (e) => e.length;
+

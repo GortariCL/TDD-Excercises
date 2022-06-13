@@ -2,7 +2,7 @@ const addOne = (numbers) => {
   if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
-  return numbers.map((e) => e + 1);
+  return numbers.map(addOneToElement);
 };
 
 module.exports = {
@@ -26,3 +26,5 @@ const isNotEmptyArray = (numbers) => {
 const isNotAnArray = (numbers) => {
   return !Array.isArray(numbers);
 }
+const addOneToElement = (e) => e + 1;
+
