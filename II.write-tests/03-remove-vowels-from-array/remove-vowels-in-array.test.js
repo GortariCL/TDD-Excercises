@@ -8,7 +8,6 @@ describe("given the removeVowelsForWords function", () => {
     // Act
     const result = removeVowelsForWords(input);
     // Assert
-    console.log(result);
     expect(result).toEqual(expected);
   });
 

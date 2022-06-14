@@ -1,5 +1,5 @@
 const removeVowels = (word) => {
-  if (isNotString(word) || isEmptyString(word)) {
+  if (isNotValidValue(word)) {
     throw new Error("Invalid param");
   }
   const characters = word.split("");
@@ -20,6 +20,7 @@ module.exports = {
 };
 
 const vowelsArray = ["a", "e", "i", "o", "u"];
+
 const characterType = (character) => {
   return vowelsArray.some(vowel => vowel === character);
   /* return (
@@ -39,6 +40,10 @@ const isNotString = (word) => {
 const isEmptyString = (word) => {
   return word.length === 0;
 };
+
+const isNotValidValue = (word) => {
+  return isNotString(word) || isEmptyString(word);
+}
 /*
   Let's trace this piece of code - what is the value of result with this input
 

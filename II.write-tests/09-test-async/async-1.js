@@ -8,7 +8,7 @@ const getRepos = (repoName) => {
         return rep.name;
       });
     })
-    .catch(error => {return error});
+    .catch(error => {throw error});
 };
 
 module.exports = {
