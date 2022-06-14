@@ -1,10 +1,11 @@
+const byEven = (number) => {
+  return number % 2 === 0;
+};
 const getEven = (numbers) => {
   if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
-  return numbers.filter((number) => {
-    return number % 2 === 0;
-  });
+  return numbers.filter(byEven);
 };
 
 module.exports = {

@@ -19,23 +19,26 @@ module.exports = {
   removeVowels,
 };
 
+const vowelsArray = ["a", "e", "i", "o", "u"];
 const characterType = (character) => {
-  return (
+  return vowelsArray.some(vowel => vowel === character);
+  /* return (
     character === "a" ||
     character === "o" ||
     character === "i" ||
     character === "e" ||
     character === "u"
-  );
+  ); */
+  //return vowelsArray.indexOf(character) >= 0;
 };
 
 const isNotString = (word) => {
   return typeof word !== "string";
-}
+};
 
 const isEmptyString = (word) => {
   return word.length === 0;
-}
+};
 /*
   Let's trace this piece of code - what is the value of result with this input
 

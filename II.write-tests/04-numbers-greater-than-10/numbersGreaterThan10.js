@@ -1,10 +1,9 @@
+const byGreaterThan10 = (number) => number > 10;
 const largerThanTen = (array) => {
   if (isNotValidParam(array)) {
     throw new Error("Invalid param");
   }
-  return array.filter((number) => {
-    return number > 10;
-  });
+  return array.filter(byGreaterThan10);
 };
 
 module.exports = {

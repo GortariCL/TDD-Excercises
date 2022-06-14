@@ -1,17 +1,27 @@
-const getRepos = require("./async-2");
-const fetcher = require("./fetcher");
+const { getRepos } = require("./async-2");
+const { fetcher } = require("./fetcher");
+const github = require("./github.json");
 jest.mock("./fetcher");
 
-test("gets a list of repositories names (with mock)", function() {
-  // arrange
-  fetcher.mockResolvedValue([{ name: "js-exercises" }]);
-  var url = "https://api.github.com/users/kabaros/repos";
+describe("given the getRepos function", () => {
+  it("http OK status 200 (with mock)", () => {
+    // arrange
+    const url = "https://api.github.com/users/kabaros/repos";
+    fetcher.mockResolvedValue([{ name: github[0].name }]);
+    // act
+    return getRepos(url).then((result) => {
+      // assert
+      expect(result).toContain("aws-lambda-starter");
+    });
+  });
 
-  // act
-  return getRepos(url).then(function(result) {
-    // assert
-    expect(result).toContain("js-exercises");
+  it("Resource not found", () => {
+    // arrange
+    const url = "";
+    fetcher.mockResolvedValue([{ status: 404 }]);
+    // act and assert
+    return getRepos(url).catch((result) => {
+      expect(result).rejects.toThrow(error);
+    });
   });
 });
-
-test("a more deterministic test", function() {});

@@ -2,10 +2,10 @@ const greetPeople = (people) => {
   if (isNotValidParam(people)) {
     throw new Error("Invalid param");
   }
-  let greeting = "Hello";
+  let greeting = "Hello ";
 
-  people.map((person) => (greeting = `${greeting} ${person}`));
-  return greeting;
+  /* people.map((person) => (greeting = `${greeting} ${person}`)); */
+  return greeting + people.join(" ");
 };
 
 module.exports = {
