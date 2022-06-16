@@ -43,11 +43,9 @@ describe("given the add function", () => {
 
   it("given the input as a negative number or contain negative numbers when it calls the function will throw an exception", () => {
     // arrange
-    const input = "1,2,10,20,-30";
-    // act
-    const result = add(input);
+    const expectedToThrow =  () => add("1,2,10,20,-30");
     // assert
-    expect(result).toEqual("negatives not allowed: -30");
+    expect(expectedToThrow).toThrow("negatives not allowed: -30");
   });
 
   it("given the input as a number or contains one equal to or greater than 1000 when it calls the function it will transform that number at 0", () => {
@@ -58,15 +56,6 @@ describe("given the add function", () => {
     // assert
     expect(result).toEqual(33);
   });
-
-  it("given the input as a number or contains one equal to or greater than 1000 when it calls the function it will transform that number at 0", () => {
-    // arrange
-    const input = "1,2,10,20,1000";
-    // act
-    const result = add(input);
-    // assert
-    expect(result).toEqual(33);
-  });  
 
   it("given no input when it calls the function it will throw an error", () => {
     // arrange

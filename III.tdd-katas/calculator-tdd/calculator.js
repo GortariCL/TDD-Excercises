@@ -6,9 +6,11 @@ const add = (input) => {
     return 0;
   }
   if (isNegative(input)) {
-    return `negatives not allowed: ${splitTransformNegativeNumbers(
-      input
-    ).toString()}`;
+    throw new Error(
+      `negatives not allowed: ${splitTransformNegativeNumbers(
+        input
+      ).toString()}`
+    );
   }
   if (!isNegative(input)) {
     return splitTransformAndAddNumbers(input);

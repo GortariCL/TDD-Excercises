@@ -2,12 +2,20 @@ const { fizzbuzz } = require("./fizz-buzz");
 
 describe("given the fizzbuz function", () =>{
   it("given the input 1 when it calls the function will return '1'", () => {
-    const result = fizzbuzz(1);
+    // arrange
+    const input = 1;
+    // act
+    const result = fizzbuzz(input);
+    // assert
     expect(result).toEqual("1");
   });
   
   it("given the input 2 when it calls the function will return '1,2'", () => {
+    // arrange
+    const input = 2;
+    // act
     const result = fizzbuzz(2);
+    // assert
     expect(result).toEqual("1,2");
   });
 

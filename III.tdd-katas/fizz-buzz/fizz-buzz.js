@@ -33,5 +33,3 @@ const isFizzBuzz = (fizzBuzzArray) => {
 const isNumber = (numbers) => {
   return typeof numbers !== "number";
 };
-
-console.log(fizzbuzz(53));
