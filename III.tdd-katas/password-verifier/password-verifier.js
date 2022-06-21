@@ -1,43 +1,75 @@
-const verify = (password) => {
-  if (isNotString(password)) {
-    throw new Error("Your password must contain letters and numbers");
+class PasswordVerifier {
+  constructor(password) {
+    this.password = password;
   }
-  if (isBeLargerThan8Chars(password)) {
-    throw new Error("Your password must have more than 8 characters");
+  static verify(password) {
+    notNull(password);
+    const requiredValidations = [leastOneLowercase];
+    const validations = [largerThan8Chars, leastOneUppercase, leastOneNumber];
+
+    const requiredErrors = requiredValidations
+      .map((validations) => validations(password))
+      .filter((err) => err !== "");
+
+    const errors = validations
+      .map((validation) => validation(password))
+      .filter((err) => err !== "");
+
+    if (atLeast3Validations(requiredErrors, errors, validations)) {
+      return "OK";
+    }
+    if (thereAreErrors(requiredErrors, errors)) {
+      const msg = errors.join();
+      throw new Error(msg);
+    }
+    if (requiredErrors.length > 0) {
+      const msg = requiredErrors.join();
+      throw new Error(msg);
+    }
   }
-  if (isAtLeastOneLowercase(password)) {
-    throw new Error("Your password must have at least one lowercase letter");
+}
+
+const notNull = (password) => {
+  if (password === null) {
+    throw new Error("Password should be not null");
   }
-  if (isAtLeastOneUppercase(password)) {
-    throw new Error("Your password must have at least one uppercase letter");
-  }
-  if (isAtLeastOneNumber(password)) {
-    throw new Error("Your password must have at least one number");
-  }
-  return "OK"
+};
+
+const leastOneLowercase = (password) => {
+  return password.search(/[a-z]/) < 0
+    ? "Your password must have at least one lowercase letter"
+    : "";
+};
+
+const largerThan8Chars = (password) => {
+  return password.length <= 8
+    ? "Your password must have more than 8 characters"
+    : "";
+};
+
+const leastOneUppercase = (password) => {
+  return password.search(/[A-Z]/) < 0
+    ? "Your password must have at least one uppercase letter"
+    : "";
+};
+
+const leastOneNumber = (password) => {
+  return password.search(/[0-9]/) < 0
+    ? "Your password must have at least one number"
+    : "";
+};
+
+const thereAreErrors = (requiredErrors, errors) => {
+  return !requiredErrors.length && errors.length >= 1;
+};
+
+const atLeast3Validations = (requiredErrors, errors, validations) => {
+  return (
+    (!requiredErrors.length && !errors.length) ||
+    (!requiredErrors.length && errors.length >= validations.length - 1)
+  );
 };
 
 module.exports = {
-  verify,
+  PasswordVerifier,
 };
-
-const isAtLeastOneNumber = (password) => {
-    return password.search(/[0-9]/) < 0;
-}
-
-const isAtLeastOneUppercase = (password) => {
-    return password.search(/[A-Z]/) < 0;
-}
-
-const isAtLeastOneLowercase = (password) => {
-    return password.search(/[a-z]/) < 0;
-}
-
-const isBeLargerThan8Chars = (password) => {
-    return password.length <= 8;
-}
-
-const isNotString = (password) => {
-    return typeof password !== "string";
-}
-

@@ -41,6 +41,27 @@ describe("given the add function", () => {
     expect(result).toEqual(expected);
   });
 
+  it("given the input '1\n2,3' when it calls the function it will return 6", () => {
+    // arrange
+    const input = "1\n2,3";
+    const expected = 6;
+    // act
+    const result = add(input);
+    console.log("result => ", result);
+    // assert
+    expect(result).toEqual(expected);
+  });
+
+  it("given the input '//;\n1;2' when it calls the function it will return 3", () => {
+    // arrange
+    const input = "//;\n1;2";
+    const expected = 3;
+    // act
+    const result = add(input);
+    // assert
+    expect(result).toEqual(expected);
+  });
+
   it("given the input as a negative number or contain negative numbers when it calls the function will throw an exception", () => {
     // arrange
     const expectedToThrow =  () => add("1,2,10,20,-30");

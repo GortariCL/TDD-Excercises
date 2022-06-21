@@ -1,5 +1,5 @@
 const getSecondThird = (array) => {
-  if(isNotValidParam(array)){
+  if (isNotValidParam(array)) {
     throw new Error("Invalid param");
   }
 
@@ -8,28 +8,27 @@ const getSecondThird = (array) => {
   return [newArray[1], newArray[2]];
 };
 
-module.exports = {
-  getSecondThird,
-}
-
 const isNotArray = (array) => {
   return !Array.isArray(array);
-}
+};
 const isNotValidValue = (array) => {
-  return array.some(e => e === null || typeof e !== "number");
-}
+  return array.some((e) => e === null || typeof e !== "number");
+};
 
 const isEmptyArray = (array) => {
   return array.length === 0;
-}
+};
 
 const isNotValidParam = (array) => {
   return isNotArray(array) || isEmptyArray(array) || isNotValidValue(array);
-}
+};
 
 const ascOrder = () => {
   return (a, b) => {
     return a - b;
   };
-}
+};
 
+module.exports = {
+  getSecondThird,
+};

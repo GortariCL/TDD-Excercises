@@ -3,8 +3,8 @@ const fizzbuzz = (numbers) => {
     throw new Error("Invalid param");
   }
   const fizzBuzzArray = [];
-  for (i = 1; i <= numbers; i++) {
-    isFizzBuzz(fizzBuzzArray);
+  for (let i = 1; i <= numbers; i++) {
+    isFizzBuzz(fizzBuzzArray, i);
   }
   return fizzBuzzArray.toString();
 };
@@ -13,7 +13,7 @@ module.exports = {
   fizzbuzz,
 };
 
-const isFizzBuzz = (fizzBuzzArray) => {
+const isFizzBuzz = (fizzBuzzArray, i) => {
   if (i % 15 === 0) {
     fizzBuzzArray.push("FizzBuzz");
   } else if (i % 3 === 0) {

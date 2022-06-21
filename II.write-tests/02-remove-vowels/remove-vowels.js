@@ -3,11 +3,9 @@ const removeVowels = (word) => {
     throw new Error("Invalid param");
   }
   const characters = word.split("");
-  console.log("desde linea 6 => ", characters);
   const result = [];
 
   characters.forEach((character) => {
-    console.log("desde linea 10 => ",character);
     if (characterType(character)) {
       result.push("_");
     } else {
@@ -24,7 +22,6 @@ module.exports = {
 const vowelsArray = ["a", "e", "i", "o", "u"];
 
 const characterType = (character) => {
-  console.log(character);
   return vowelsArray.some(vowel => vowel === character);
   /* return (
     character === "a" ||

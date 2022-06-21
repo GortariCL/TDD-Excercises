@@ -31,14 +31,15 @@ const isEmptyString = (input) => {
 
 const splitTransformAndAddNumbers = (input) => {
   return input
-    .split(/[\s;,]/g)
+    .split(/[\s;,/]/)
     .map((e) => (parseInt(e) >= 1000 ? (e = 0) : parseInt(e)))
-    .reduce((acc, cur) => acc + cur);
+    .filter((e) => !Number.isNaN(e))
+    .reduce((acc, cur) => acc + cur, 0);
 };
 
 const splitTransformNegativeNumbers = (input) => {
   return input
-    .split(/[\s;,]/g)
+    .split(/[\s;,]/)
     .map((e) => parseInt(e))
     .filter((e) => e < 0);
 };
