@@ -1,4 +1,8 @@
 const convertToOldRoman = (number) => {
+  if (isNotValidParams(number)) {
+    throw new Error("Invalid param");
+  }
+
   const oldRoman = {
     M: 1000,
     D: 500,
@@ -18,6 +22,10 @@ const convertToOldRoman = (number) => {
 };
 
 const convertToNewRoman = (number) => {
+  if (isNotValidParams(number)) {
+    throw new Error("Invalid param");
+  }
+
   const newRoman = {
     M: 1000,
     CM: 900,
@@ -41,6 +49,22 @@ const convertToNewRoman = (number) => {
   }
 
   return result;
+};
+
+const isLessThan0 = (number) => {
+  return number <= 0;
+};
+
+const isNotNumber = (number) => {
+  return typeof number !== "number";
+};
+
+const isNull = (number) => {
+  return number === null;
+};
+
+const isNotValidParams = (number) => {
+  return isNull(number) || isNotNumber(number) || isLessThan0(number);
 };
 
 module.exports = {

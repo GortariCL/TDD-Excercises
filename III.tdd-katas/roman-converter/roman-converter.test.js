@@ -123,6 +123,32 @@ describe("given the function convertToOldRoman", () => {
     // assert
     expect(result).toEqual(expected);
   });
+
+  it("given no input when it calls the function it will throw an error", () => {
+    // arrange
+    const expectedToThrow = () => convertToOldRoman();
+    // act and assert
+    expect(expectedToThrow).toThrow("Invalid param");
+  });
+
+  it("given the input as a data type other than an array when it calls the function it will throw an error", () => {
+    // arrange
+    const expectedToThrow1 = () => convertToOldRoman(null);
+    const expectedToThrow2 = () => convertToOldRoman(undefined);
+    const expectedToThrow3 = () => convertToOldRoman("");
+    const expectedToThrow4 = () => convertToOldRoman("Hola");
+    const expectedToThrow5 = () => convertToOldRoman({});
+    const expectedToThrow6 = () => convertToOldRoman(false);
+    const expectedToThrow7 = () => convertToOldRoman(true);
+    // act and assert
+    expect(expectedToThrow1).toThrow("Invalid param");
+    expect(expectedToThrow2).toThrow("Invalid param");
+    expect(expectedToThrow3).toThrow("Invalid param");
+    expect(expectedToThrow4).toThrow("Invalid param");
+    expect(expectedToThrow5).toThrow("Invalid param");
+    expect(expectedToThrow6).toThrow("Invalid param");
+    expect(expectedToThrow7).toThrow("Invalid param");
+  });
 });
 
 // convertToNewRoman() TEST
@@ -265,5 +291,31 @@ describe("given the function convertToNewRoman", () => {
     const result = convertToNewRoman(input);
     // assert
     expect(result).toEqual(expected);
+  });
+
+  it("given no input when it calls the function it will throw an error", () => {
+    // arrange
+    const expectedToThrow = () => convertToNewRoman();
+    // act and assert
+    expect(expectedToThrow).toThrow("Invalid param");
+  });
+
+  it("given the input as a data type other than an array when it calls the function it will throw an error", () => {
+    // arrange
+    const expectedToThrow1 = () => convertToNewRoman(null);
+    const expectedToThrow2 = () => convertToNewRoman(undefined);
+    const expectedToThrow3 = () => convertToNewRoman("");
+    const expectedToThrow4 = () => convertToNewRoman("Hola");
+    const expectedToThrow5 = () => convertToNewRoman({});
+    const expectedToThrow6 = () => convertToNewRoman(false);
+    const expectedToThrow7 = () => convertToNewRoman(true);
+    // act and assert
+    expect(expectedToThrow1).toThrow("Invalid param");
+    expect(expectedToThrow2).toThrow("Invalid param");
+    expect(expectedToThrow3).toThrow("Invalid param");
+    expect(expectedToThrow4).toThrow("Invalid param");
+    expect(expectedToThrow5).toThrow("Invalid param");
+    expect(expectedToThrow6).toThrow("Invalid param");
+    expect(expectedToThrow7).toThrow("Invalid param");
   });
 });
