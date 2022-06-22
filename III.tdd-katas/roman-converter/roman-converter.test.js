@@ -116,8 +116,8 @@ describe("given the function convertToOldRoman", () => {
 
   it("given the input 22 when calls the function it will return 'XXII'", () => {
     // arrange
-    const input = 3;
-    const expected = "III";
+    const input = 22;
+    const expected = "XXII";
     // act
     const result = convertToOldRoman(input);
     // assert
