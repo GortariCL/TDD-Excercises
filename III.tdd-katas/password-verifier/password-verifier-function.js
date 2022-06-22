@@ -1,35 +1,30 @@
-class PasswordVerifier {
-  constructor(password) {
-    this.password = password;
+const verify = (password) => {
+  notNull(password);
+
+  const requiredValidations = [leastOneLowercase];
+  const validations = [largerThan8Chars, leastOneUppercase, leastOneNumber];
+
+  const requiredErrors = requiredValidations
+    .map((validations) => validations(password))
+    .filter((err) => err !== "");
+
+  const errors = validations
+    .map((validation) => validation(password))
+    .filter((err) => err !== "");
+
+  if (atLeast3Validations(requiredErrors, errors, validations)) {
+    return "OK";
   }
-  static verify(password) {
-    notNull(password);
-    
-    const requiredValidations = [leastOneLowercase];
-    const validations = [largerThan8Chars, leastOneUppercase, leastOneNumber];
-
-    const requiredErrors = requiredValidations
-      .map((validations) => validations(password))
-      .filter((err) => err !== "");
-
-    const errors = validations
-      .map((validation) => validation(password))
-      .filter((err) => err !== "");
-
-    if (atLeast3Validations(requiredErrors, errors, validations)) {
-      return "OK";
-    }
-    if (thereAreErrors(requiredErrors, errors)) {
-      const msg = errors.join();
-      throw new Error(msg);
-    }
-    //if (requiredErrors.length > 0)
-    else {
-      const msg = requiredErrors.join();
-      throw new Error(msg);
-    }
+  if (thereAreErrors(requiredErrors, errors)) {
+    const msg = errors.join();
+    throw new Error(msg);
   }
-}
+  //if (requiredErrors.length > 0)
+  else {
+    const msg = requiredErrors.join();
+    throw new Error(msg);
+  }
+};
 
 const notNull = (password) => {
   if (password === null) {
@@ -73,5 +68,5 @@ const atLeast3Validations = (requiredErrors, errors, validations) => {
 };
 
 module.exports = {
-  PasswordVerifier,
+  verify,
 };
