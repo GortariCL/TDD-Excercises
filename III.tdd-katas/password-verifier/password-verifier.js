@@ -4,7 +4,7 @@ class PasswordVerifier {
   }
   static verify(password) {
     notNull(password);
-    
+
     const requiredValidations = [leastOneLowercase];
     const validations = [largerThan8Chars, leastOneUppercase, leastOneNumber];
 
