@@ -2,18 +2,18 @@ class PasswordVerifier {
   constructor(password) {
     this.password = password;
   }
-  static verify(password) {
-    notNull(password);
+  verify() {
+    this.notNull();
 
     const requiredValidations = [leastOneLowercase];
     const validations = [largerThan8Chars, leastOneUppercase, leastOneNumber];
 
     const requiredErrors = requiredValidations
-      .map((validations) => validations(password))
+      .map((validations) => validations(this.password))
       .filter((err) => err !== "");
 
     const errors = validations
-      .map((validation) => validation(password))
+      .map((validation) => validation(this.password))
       .filter((err) => err !== "");
 
     if (atLeast3Validations(requiredErrors, errors, validations)) {
@@ -29,13 +29,15 @@ class PasswordVerifier {
       throw new Error(msg);
     }
   }
+
+  notNull () {
+    if (this.password === null) {
+      throw new Error("Password should be not null");
+    }
+  };
 }
 
-const notNull = (password) => {
-  if (password === null) {
-    throw new Error("Password should be not null");
-  }
-};
+
 
 const leastOneLowercase = (password) => {
   return password.search(/[a-z]/) < 0
