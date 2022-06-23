@@ -15,8 +15,11 @@ const convertToOldRoman = (number) => {
   let result = "";
 
   for (key in oldRoman) {
+    //console.log("Linea 18 => ", oldRoman[key]);
     result += key.repeat(Math.floor(number / oldRoman[key]));
+    //console.log("Linea 19 => ",result);
     number %= oldRoman[key];
+    //console.log("Linea 21 => ", number);
   }
   return result;
 };
@@ -71,3 +74,5 @@ module.exports = {
   convertToOldRoman,
   convertToNewRoman,
 };
+
+convertToOldRoman(2100);
