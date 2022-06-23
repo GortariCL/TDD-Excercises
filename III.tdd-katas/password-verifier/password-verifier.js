@@ -37,8 +37,6 @@ class PasswordVerifier {
   };
 }
 
-
-
 const leastOneLowercase = (password) => {
   return password.search(/[a-z]/) < 0
     ? "Your password must have at least one lowercase letter"
