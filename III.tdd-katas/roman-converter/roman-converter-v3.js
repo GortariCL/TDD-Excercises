@@ -58,7 +58,7 @@ const convertToNewRoman = (number) => {
 
 // validation functions
 const isLessThan0 = (number) => {
-  return number <= 0;
+  return number <= 0 && number > 4999;
 };
 
 const isNotNumber = (number) => {
@@ -73,7 +73,6 @@ const isNotValidParams = (number) => {
   return isNull(number) || isNotNumber(number) || isLessThan0(number);
 };
 
-console.log(convertToOldRoman(944));
 module.exports = {
   convertToOldRoman,
   convertToNewRoman

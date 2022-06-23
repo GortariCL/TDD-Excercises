@@ -36,7 +36,7 @@ const {
     it("given the input 4 when calls the function it will return 'IIII'", () => {
       // arrange
       const input = 4;
-      const expected = "IIII";
+      const expected = "IV";
       // act
       const result = convertToOldRoman(input);
       // assert
@@ -412,6 +412,16 @@ const {
       // arrange
       const input = 944;
       const expected = "CMXLIV";
+      // act
+      const result = convertToNewRoman(input);
+      // assert
+      expect(result).toEqual(expected);
+    });
+
+    it("given the input 944 when calls the function it will return 'CMXLIV'", () => {
+      // arrange
+      const input = 2999;
+      const expected = "MMCMXCIX";
       // act
       const result = convertToNewRoman(input);
       // assert
